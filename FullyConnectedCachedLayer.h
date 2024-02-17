@@ -9,6 +9,7 @@ class FullyConnectedCachedLayer : public FullyConnectedLayer, CachedLayer {
 			nextOutput[i] = biases[i];
 		}
 	}
+	double* forward(double *input) override;
 };
 
 

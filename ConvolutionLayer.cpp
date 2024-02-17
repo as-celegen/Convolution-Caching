@@ -18,5 +18,7 @@ double* ConvolutionLayer::forward(double *input) {
 			}
 		}
 	}
+
+	delete[] input;
 	return output;
 }

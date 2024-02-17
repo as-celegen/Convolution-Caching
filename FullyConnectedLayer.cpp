@@ -8,5 +8,7 @@ double* FullyConnectedLayer::forward(double *input) {
 			output[i] += input[j] * weights[i * inputSize + j];
 		}
 	}
+
+	delete[] input;
 	return output;
 }
