@@ -3,6 +3,7 @@
 
 
 class CachedLayer {
+protected:
 	// Next output of this layer for the next iteration
 	double* nextOutput;
 	// Input of this layer from the previous iteration
