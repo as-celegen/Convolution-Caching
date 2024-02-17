@@ -11,4 +11,6 @@ add_executable(LayerCaching main.cpp
         FullyConnectedCachedLayer.h
         ConvolutionCachedLayer.cpp
         ConvolutionCachedLayer.h
-        CachedLayer.h)
+        CachedLayer.h
+        Model.cpp
+        Model.h)
