@@ -3,6 +3,7 @@
 #include "Layer.h"
 
 class FullyConnectedLayer : public Layer {
+protected:
     // Array of weights with shape [outputSize, inputSize]
 	double* weights;
     // Array of biases with shape [outputSize]

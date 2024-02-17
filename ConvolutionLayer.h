@@ -3,6 +3,7 @@
 #include "Layer.h"
 
 class ConvolutionLayer : public Layer{
+protected:
 	// Kernel weights with shape [outputChannels, kernelHeight, kernelWidth, inputChannels]
 	double* weights;
 	// Bias with shape [outputHeight, outputWidth, outputChannels]

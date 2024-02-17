@@ -3,6 +3,7 @@
 
 
 class Layer {
+protected:
     int inputSize;
     int outputSize;
 
