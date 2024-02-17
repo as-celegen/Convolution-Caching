@@ -1,5 +1,6 @@
 #ifndef LAYERCACHING_LAYER_H
 #define LAYERCACHING_LAYER_H
+#include <random>
 
 
 class Layer {

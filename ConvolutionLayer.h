@@ -6,7 +6,7 @@ class ConvolutionLayer : public Layer{
 protected:
 	// Kernel weights with shape [outputChannels, kernelHeight, kernelWidth, inputChannels]
 	double* weights;
-	// Bias with shape [outputHeight, outputWidth, outputChannels]
+	// Bias with shape [outputChannels]
 	double* biases;
     int kernelHeight;
 	int kernelWidth;
@@ -24,6 +24,16 @@ public:
 			inputChannels(inputChannels), outputChannels(outputChannels) {
 		weights = new double[outputChannels * kernelHeight * kernelWidth * inputChannels];
 		biases = new double[outputChannels];
+
+		std::default_random_engine generator;
+		std::normal_distribution<double> distribution(1.0,1.0);
+
+		for (int i = 0; i < outputChannels * kernelHeight * kernelWidth * inputChannels; i++) {
+			weights[i] = distribution(generator);
+		}
+		for (int i = 0; i < outputChannels; i++) {
+			biases[i] = distribution(generator);
+		}
 	}
 	double* forward(double *input) override;
 };
