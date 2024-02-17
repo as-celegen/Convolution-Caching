@@ -9,7 +9,10 @@ class FullyConnectedLayer : public Layer {
 	double* biases;
 
 public:
-    FullyConnectedLayer(int inputSize, int outputSize);
+    FullyConnectedLayer(int inputSize, int outputSize): Layer(inputSize, outputSize) {
+		weights = new double[inputSize * outputSize];
+		biases = new double[outputSize];
+	}
 	double* forward(double *input) override;
 };
 
