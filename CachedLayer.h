@@ -17,6 +17,7 @@ public:
 		prevInput = new double[inputSize];
 		threshold = new double[inputSize];
 		for (int i = 0; i < inputSize; i++) {
+			prevInput[i] = 0.0;
 			threshold[i] = thresholdValue;
 		}
 	}
@@ -25,6 +26,10 @@ public:
 		nextOutput = new double[outputSize];
 		prevInput = new double[inputSize];
 		this->threshold = threshold;
+
+		for (int i = 0; i < inputSize; i++) {
+			prevInput[i] = 0.0;
+		}
 	}
 };
 
