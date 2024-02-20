@@ -15,7 +15,7 @@ If dx_i denotes the difference between the i'th and (i+1)'th frames of the video
 
 A * (x_i + dx_i) + b = A * x_i + A * dx_i + b = y_i + A * dx_i
 
-By efficiently calculating A * dx_i and summing it with the result of the i'th frame, the result for the (i+1)'th frame can be computed faster than through a traditional convolution operation.
+For certain input types like surveillance videos, dx_i might have numerous 0 values, representing still objects. By efficiently calculating A * dx_i with ignoring 0 values in the dx_i and summing it with the result of the i'th frame, the result for the (i+1)'th frame can be computed faster than through a traditional convolution operation.
 
 ## Implementation
 The implementation stores convolution layer results in a cache and utilizes this cache to expedite the forward pass for pixels shared between adjacent iterations. The implementation, for simplicity, is single-threaded and does not incorporate features like padding or stride.
