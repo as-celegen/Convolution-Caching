@@ -32,6 +32,12 @@ public:
 			prevInput[i] = 0.0;
 		}
 	}
+
+	~CachedLayer() {
+		delete[] nextOutput;
+		delete[] prevInput;
+		delete[] threshold;
+	}
 };
 
 

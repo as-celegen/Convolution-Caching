@@ -27,6 +27,7 @@ public:
 
 		std::default_random_engine generator;
 		std::normal_distribution<double> distribution(1.0,1.0);
+		generator.seed( 2 );
 
 		for (int i = 0; i < outputChannels * kernelHeight * kernelWidth * inputChannels; i++) {
 			weights[i] = distribution(generator);
@@ -34,6 +35,11 @@ public:
 		for (int i = 0; i < outputChannels; i++) {
 			biases[i] = distribution(generator);
 		}
+	}
+
+	~ConvolutionLayer() {
+		delete[] weights;
+		delete[] biases;
 	}
 	double* forward(double *input) override;
 };

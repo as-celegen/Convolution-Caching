@@ -4,10 +4,11 @@
 #include "CachedLayer.h"
 
 class ConvolutionCachedLayer: public ConvolutionLayer, CachedLayer{
+public:
 	ConvolutionCachedLayer(int inputWidth, int inputHeight, int inputChannels, int outputChannels, int kernelWidth, int kernelHeight):
 			ConvolutionLayer(inputWidth, inputHeight, inputChannels, outputChannels, kernelWidth, kernelHeight),
 			CachedLayer(inputWidth * inputHeight * inputChannels, (inputWidth - kernelWidth + 1) * (inputHeight - kernelHeight + 1) * outputChannels) {
-		for (int i = 0; i < (inputWidth - kernelWidth + 1) * (inputHeight - kernelHeight + 1) * outputChannels; i++) {
+		for (int i = 0; i < outputSize; i++) {
 			nextOutput[i] = biases[i % outputChannels];
 		}
 	}

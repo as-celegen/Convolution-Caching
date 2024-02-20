@@ -25,6 +25,11 @@ public:
 			biases[i] = distribution(generator);
 		}
 	}
+
+	~FullyConnectedLayer() {
+		delete[] weights;
+		delete[] biases;
+	}
 	double* forward(double *input) override;
 };
 

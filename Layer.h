@@ -9,9 +9,13 @@ protected:
     int outputSize;
 
 public:
-    Layer(int inputSize, int outputSize);
-    int getInputSize() const;
-    int getOutputSize() const;
+    Layer(int inputSize, int outputSize): inputSize(inputSize), outputSize(outputSize) { };
+    int getInputSize() const {
+		return inputSize;
+	};
+    int getOutputSize() const {
+		return outputSize;
+	};
     virtual double* forward(double *input) = 0;
 };
 
