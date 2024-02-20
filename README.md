@@ -21,6 +21,9 @@ For certain input types like surveillance videos, dx_i might have numerous 0 val
 The implementation stores convolution layer results in a cache and utilizes this cache to expedite the forward pass for pixels shared between adjacent iterations. The implementation, for simplicity, is single-threaded and does not incorporate features like padding or stride.
 
 ## How to Run
+
+To prepare the test file, place the video you want to test in the project root folder as "video.mp4". Run the convert_video_to_byte_array.py file. This will create a raw video file named "video.bin". (Note: The raw video file size may be substantial.)
+
 To execute the project, compile the code and run the output file. The codebase is written in C++ and employs the CMake build system. Alternatively, the code can be executed using the following commands:
 
 ```bash

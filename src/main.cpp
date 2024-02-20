@@ -13,7 +13,7 @@ int main() {
 	std::cout << "Starting" << std::endl;
 	int width, height, channels, totalFrames;
 	std::cout << "Reading file" << std::endl;
-	std::ifstream file("video.bin", std::ios::binary);
+	std::ifstream file("../video.bin", std::ios::binary);
 	if (!file.is_open()) {
 		throw std::runtime_error("File not found");
 	}
