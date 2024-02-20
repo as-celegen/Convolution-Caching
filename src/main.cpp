@@ -3,11 +3,11 @@
 #include <fstream>
 #include <ctime>
 #include <string>
-#include "FullyConnectedLayer.h"
-#include "ConvolutionLayer.h"
-#include "FullyConnectedCachedLayer.h"
-#include "ConvolutionCachedLayer.h"
-#include "Model.h"
+#include "../lib/layers/FullyConnectedLayer.h"
+#include "../lib/layers/ConvolutionLayer.h"
+#include "../lib/layers/FullyConnectedCachedLayer.h"
+#include "../lib/layers/ConvolutionCachedLayer.h"
+#include "../lib/Model.h"
 
 int main() {
 	std::cout << "Starting" << std::endl;

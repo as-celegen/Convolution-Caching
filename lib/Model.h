@@ -1,10 +1,6 @@
-//
-// Created by AhmedSelim on 17.02.2024.
-//
-
 #ifndef LAYERCACHING_MODEL_H
 #define LAYERCACHING_MODEL_H
-#include "Layer.h"
+#include "layers/Layer.h"
 
 class Model {
 public:
