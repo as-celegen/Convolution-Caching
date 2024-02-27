@@ -13,7 +13,7 @@ int main() {
 	std::cout << "Starting" << std::endl;
 	int width, height, channels, totalFrames;
 	std::cout << "Reading file" << std::endl;
-	std::ifstream file("../video.bin", std::ios::binary);
+	std::ifstream file("video.bin", std::ios::binary);
 	if (!file.is_open()) {
 		throw std::runtime_error("File not found");
 	}
@@ -46,9 +46,9 @@ int main() {
 
 	std::cout << "Starting forward pass" << std::endl;
 	char byte;
+	double* frame1 = new double[width * height * channels];
+	double* frame2 = new double[width * height * channels];
 	for (int i = 0; i < totalFrames; ++i) {
-		double* frame1 = new double[width * height * channels];
-		double* frame2 = new double[width * height * channels];
 		for (int j = 0; j < width * height * channels; ++j) {
 			file.read(&byte, 1);
 			frame1[j] = (double)byte;
@@ -75,9 +75,13 @@ int main() {
 		delete[] output1;
 		delete[] output2;
 
-		std::cout << "Total time normal: " << totalTimeNormal << std::endl;
-		std::cout << "Total time cached: " << totalTimeCached << std::endl;
 	}
+	delete[] frame1;
+	delete[] frame2;
+	std::cout << std::endl;
+
+	std::cout << "Total time normal: " << totalTimeNormal << std::endl;
+	std::cout << "Total time cached: " << totalTimeCached << std::endl;
 
     return 0;
 }

@@ -1,6 +1,9 @@
 #ifndef LAYERCACHING_CONVOLUTIONLAYER_H
 #define LAYERCACHING_CONVOLUTIONLAYER_H
 #include "Layer.h"
+#ifdef __NVCC__
+#include <cuda_runtime.h>
+#endif
 
 class ConvolutionLayer : public Layer{
 protected:
@@ -35,11 +38,28 @@ public:
 		for (int i = 0; i < outputChannels; i++) {
 			biases[i] = distribution(generator);
 		}
+		#ifdef __NVCC__
+		double* tmpWeights;
+		cudaMalloc((void**)&tmpWeights, outputChannels * kernelHeight * kernelWidth * inputChannels * sizeof(double));
+		cudaMemcpy(tmpWeights, weights, outputChannels * kernelHeight * kernelWidth * inputChannels * sizeof(double), cudaMemcpyHostToDevice);
+		delete[] weights;
+		weights = tmpWeights;
+		double* tmpBiases;
+		cudaMalloc((void**)&tmpBiases, outputChannels * sizeof(double));
+		cudaMemcpy(tmpBiases, biases, outputChannels * sizeof(double), cudaMemcpyHostToDevice);
+		delete[] biases;
+		biases = tmpBiases;
+		#endif
 	}
 
 	~ConvolutionLayer() {
+		#ifdef __NVCC__
+		cudaFree(weights);
+		cudaFree(biases);
+		#else
 		delete[] weights;
 		delete[] biases;
+		#endif
 	}
 	double* forward(double *input) override;
 };
