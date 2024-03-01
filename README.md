@@ -36,6 +36,9 @@ CUDA (GPU):
 nvcc .\src\main.cpp .\lib\layers\ConvolutionCachedLayer.cu .\lib\layers\ConvolutionLayer.cu -o .\out\main.exe -arch=sm_60
 ```
 ## Results
+
+Test Video:  https://youtu.be/Gr0HpDM8Ki8?si=Fw4w2ex9XJxsv1en
+
 For testing purposes, the code was executed on a 1280x720 video with 751 frames and 3 channels using a sample model featuring 3 convolution layers with kernel sizes of 5x5, 4x4, and 3x3, respectively. A sample convolution layer has also been implemented. The results are as follows:
 
 Single-threaded CPU:
@@ -45,6 +48,7 @@ Single-threaded CPU:
 Parallelized GPU:
 - Total time for the normal convolutional layer implementation: 46.108 s
 - Total time for the convolutional cached layer implementation: 21.553 s
+
 Kernels were generated with a seed to verify the correctness of the implementation, yielding expected results. A tolerance of 0.00001 was allowed for differences in results due to floating-point operations.
 
 ## Note
